@@ -684,4 +684,4 @@ document.addEventListener('click', (e)=>{
 		const ul = e.target && e.target.closest && e.target.closest('ul[data-editable]');
 		if(ul && extrasRoot.contains(ul)) sanitizeList(ul);
 	});
-})(); 
+}); 
