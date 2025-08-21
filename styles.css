@@ -3,7 +3,7 @@
 	--card:#ffffff;
 	--muted:#6b7280;
 	--text:#1f2937;
-	--border:#e5e7eb;
+	--border:#c1c9d6;
 	--accent:#2563eb;
 	--photo-size:100px;
 	--photo-radius:8px;
@@ -34,7 +34,7 @@ body{
 .container{max-width:900px; margin:2rem auto; padding:0 1rem 2rem}
 .cv-card{
 	background:var(--card);
-	border:1px solid var(--border);
+	border:2px solid var(--border);
 	border-radius:16px;
 	box-shadow:0 10px 30px rgba(0,0,0,.06);
 	padding:1.5rem;
@@ -49,11 +49,12 @@ body{
 .header-text{flex:1}
 h1.name{margin:0 0 .25rem; font-size:2rem; line-height:1.2; font-weight:700}
 .contact{display:flex; flex-wrap:wrap; gap:.5rem 1rem; color:var(--muted)}
+.contact{word-break:break-word}
 .contact a{color:var(--muted); text-decoration:none}
 .contact a:hover{color:var(--accent)}
 
 .section{padding:1rem 0}
-.section h2{margin:0 0 .75rem; font-size:1.1rem; font-weight:700; border-bottom:1px solid var(--border); padding-bottom:.4rem}
+.section h2{margin:0 0 .75rem; font-size:1.1rem; font-weight:700; border-bottom:2px solid var(--border); padding-bottom:.4rem}
 p{margin:.35rem 0}
 .muted{color:var(--muted)}
 .item{margin-bottom:.75rem}
@@ -67,6 +68,21 @@ li{margin:.25rem 0}
 	.cv-header{flex-direction:column; align-items:flex-start}
 	.photo{width:var(--photo-size); height:var(--photo-size)}
 	.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Android/mobile adjustments */
+@media (max-width: 480px){
+	:root{ --photo-size:84px; }
+	.container{ margin:1rem auto; padding:0 .5rem 1rem }
+	.cv-card{ padding:1rem }
+	.cv-header{ gap:.75rem }
+	.cv-header .header-text h1{ font-size:1.6rem; line-height:1.25 }
+	.toolbar{ gap:.4rem; overflow-x:auto; -webkit-overflow-scrolling:touch; justify-content:flex-start; padding:.6rem .5rem }
+	.btn{ padding:.5rem .75rem }
+	.section{ padding:.75rem 0 }
+	.section h2{ font-size:1rem; padding-bottom:.35rem }
+	.skills-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) }
+	.skills-grid li{ padding:.3rem .5rem; font-size:.9rem; box-shadow:none }
 }
 
 /* Editing states */
@@ -105,10 +121,14 @@ body.locked [data-editable]{outline:none}
 
 /* Skill chips */
 .skills-grid{list-style:none; padding:0; grid-template-columns:repeat(3,minmax(0,1fr));}
+
 .skills-grid li{
-	display:inline-block; padding:.35rem .6rem; border:1px solid var(--border); border-radius:999px; background:#fff; color:var(--text);
+	display:inline-block; padding:.35rem .6rem; border:2px solid var(--border); border-radius:999px; background:#fff; color:var(--text);
 	box-shadow:0 1px 2px rgba(0,0,0,.04); white-space:nowrap;
 }
+
+/* In skills section, hide chip borders */
+#skills .skills-grid li{ border:none; }
 
 /* Edit actions (visible only when editing) */
 .edit-actions{display:flex; gap:.5rem; margin-top:.5rem}
